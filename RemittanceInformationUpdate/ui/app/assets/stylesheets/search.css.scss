@@ -1,0 +1,59 @@
+// Place all the styles related to the Search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logo{
+  width:20%;
+  height: auto;
+  overflow:hidden;
+}
+
+.dropdown-menu {
+  min-width: 0px;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 400px; 
+  overflow-x: hidden;
+}
+
+.btn-environments{
+  max-width: 250px;
+  text-align:left
+}
+
+.input-text {
+  resize:none;
+}
+
+
+.btn-search {
+  min-width: 25px;
+}
+
+.work-spinner {
+  visibility: hidden;
+}
+
+.pagination-spinner {
+  visibility: hidden;
+}
+
+.btn-expand-search {
+  color: black;
+}
+
+h4 {
+  display: inline-block;
+}
+
+.btn-expand-bills {
+  color: black;
+}
+
+@-moz-document url-prefix() { 
+  .input-text {
+    resize:none;
+  }
+}

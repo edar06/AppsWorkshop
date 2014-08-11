@@ -1,0 +1,21 @@
+<h4>Search Results</h4>
+<div class="container">
+  <% case @searchResults["searchById"] %>
+  <% when "1" %>
+    <div class="row">
+    <% @searchResults["searchResults"].each do |k,v| %>
+      <div class="<%= k %>">
+      <%= render partial: 'freight_bill_search_results', :locals => {:k => k, :v => v, :type => @searchResults["searchById"]} %>
+      </div>
+    <% end %>
+    </div>
+  <% when "2" %>
+    <div class="row">
+    <% @searchResults["searchResults"].each do |k,v| %>
+      <div class="<%= k %>">
+      <%= render partial: 'invoice_search_results', :locals => {:k => k, :v => v, :type => @searchResults["searchById"]} %>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+</div>

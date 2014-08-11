@@ -1,0 +1,15 @@
+<div class="container">
+ <div class="error-message">
+  <% if @environmentTypes["error"].present? || @searchTypes["error"].present? %>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+    <p><h3>Ouch!! :O Unfortunately something went wrong.</h3></p>
+    Error: 
+    <% if @environmentTypes["error"].present? %> <%= @environmentTypes["error"] %> <% end %>
+    <% if @environmentTypes["error"].present? %> <%= @searchTypes["error"] %> <% end %>
+    </div>
+  <% else %>
+  </div>
+  <%= render partial: 'search_bar' %>
+  <div class="search-results"> <!-- Render the Search Results Table --></div>    
+  <% end %>
+</div>

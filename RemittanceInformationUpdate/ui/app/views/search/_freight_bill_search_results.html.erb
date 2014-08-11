@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-4">
+    <% first_item_id = ((v.current_page - 1) * v.default_per_page) + 1 %>
+    <% last_item_id = first_item_id + (v.size - 1) %>
+    <label><%= "#{first_item_id}-#{last_item_id}" %> of <span class="badge"><%= v.total_count %></span> Bills <%= k %></label>
+    <a class="inline btn-expand-bills" href="javascript:void(0)" id="<%= k %>"><i class="expand-bills-<%= k %> fa fa-chevron-down"></i></a>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-1 col-md-offset-6">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-2 col-md-offset-8">
+        <i class="fa fa-cog fa-spin fa-2x pagination-spinner pagination-spinner-<%= k %>"></i>
+      </div>
+    </div> 
+  </div>
+  <% if v.total_pages != 1 %>
+  <div class="col-xs-12 col-sm-8 col-md-1">
+    <div class="btn-group pagination-buttons-<%= k %>">
+      <button type="button" page-number="<%= v.current_page %>" <% if v.first_page? %> disabled="disabled" <% end %> class="btn btn-default btn-sm btn-previous tip" data-toggle="tooltip" data-placement="top" title="Previous" id="<%= k %>" search-type="<%= type %>">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </button>
+      <button type="button" page-number="<%= v.current_page %>" <% if v.last_page? %> disabled="disabled" <% end %> class="btn btn-default btn-sm btn-next tip" data-toggle="tooltip" data-placement="top" title="Next" id="<%= k %>" search-type="<%= type %>">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </button>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div class="table-<%= k %>">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <th><small>FB Id</small></th>
+      <th><small>Invoice Id</small></th>
+      <th><small>FB Key</small></th>
+      <th><small>SCAC</small></th>
+      <th><small>Currency</small></th>
+      <th><small>Billed Amt</small></th>
+      <th><small>Status</small></th>
+      <th><small>Entered Payment</small></th>
+    </thead>
+    <tbody>
+      <% v.each do |x| %>
+      <tr class="item-row">
+      <td><small><%= x["objectId"] %></small></td>
+      <td><small><%= x["parentId"] %></small></td>
+      <td><small><%= x["objectKey"] %></small></td>
+      <td><small><%= x["SCAC"] %></small></td>
+      <td><small><%= x["currency"] %></small></td>
+      <td><small>
+        <button type="button" class="btn btn-default btn-sm amount-popover" data-toggle="popover" data-placement="top" data-content="<%= "<p><strong>Approved Amt:</strong> #{x["approvedAmount"]}</p> <p><strong>Adjusted Amt:</strong> #{x["adjustedAmount"]}</p> <p><strong>Paid Amt:</strong> #{x["paidAmount"]}</p>" %>" data-html="true">
+        <%= x["billedAmount"] %>
+        </button>
+      </small></td>
+      <td><small><%= x["status"] %></small></td>
+      <td><small> 
+        <button type="button" class="btn btn-default btn-sm date-popover" data-toggle="popover" data-placement="top" data-content="<%= "<p><strong>Due Date:</strong> #{x["dueDate"]}</p><p><strong>Received Date:</strong> #{x["receivedDate"]}</p><p><strong>Paid Date:</strong> #{x["paidDate"]}</p>" %>" data-html="true">
+        <%= x["inPaymentDate"] %>
+      </button>
+      </small></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

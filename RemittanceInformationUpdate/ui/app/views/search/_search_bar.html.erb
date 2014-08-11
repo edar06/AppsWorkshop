@@ -1,0 +1,161 @@
+<h4>Search for Item </h4> <a class="inline btn-expand-search" href="javascript:void(0)"><i class="expand-search fa fa-chevron-down"></i></a>
+
+<div class="row search-bar">
+  <div class="col-xs-12 col-sm-8 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-12">
+                <h6>Environment Type:</h6>
+                <% @environmentTypes["environmentTypes"].each do |x| %>
+                  <% if x["environmentType"] != 'ALL' %>
+                    <!-- <li id="<%= x["environmentTypeId"] %>" role="presentation">
+                      <a role="menuitem" tabindex="-1" href="javascript:void(0)"><%= x["environmentType"] %></a>
+                    </li> -->
+                    <label class="radio-inline">
+                      <input type="radio" name="environmentTypesRadio" id="<%= x["environmentTypeId"] %>" value="<%= x["environmentTypeId"] %>"> <%= x["environmentType"] %>
+                    </label>
+                  <% end %>
+                <% end %> 
+              </div>
+            </div>
+			<BR/>
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-md-10">
+					<table width="100%">
+						<tr >
+							<td>
+								<h6>Environment:</h6>
+				                <div class="dropdown environmentsList">
+				                  <button class="btn btn-default dropdown-toggle disabled btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose an Environment</span>
+				                  <span class="caret"></span>
+				                  </button>
+				                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+				                    </ul>
+								</div>
+							</td>
+							<td>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							</td>
+							<td >
+								<h6>SCAC</h6>
+				                <div class="dropdown environmentsList">
+				                  <button class="btn btn-default dropdown-toggle disabled btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose a SCAC</span>
+				                  <span class="caret"></span>
+				                  </button>
+				                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+				                    </ul>
+				                </div>
+							</td>
+							<td>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</td>
+							<td>
+								<h6>Normalized SCAC</h6>
+				                <div class="dropdown environmentsList">
+				                  <button class="btn btn-default dropdown-toggle disabled btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose a normalized SCAC</span>
+				                  <span class="caret"></span>
+				                  </button>
+				                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+				                    </ul>
+				                </div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+           <!--
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-8">
+                <h6>Environment:</h6>
+                <div class="dropdown environmentsList">
+                  <button class="btn btn-default dropdown-toggle disabled btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose an Environment</span>
+                  <span class="caret"></span>
+                  </button>
+                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+                    </ul>
+                </div>
+              </div>
+            </div>
+ 
+ 			<div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-12">
+                <h6>SCAC</h6>
+                <div class="dropdown environmentsList">
+                  <button class="btn btn-default dropdown-toggle disabled btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose a SCAC</span>
+                  <span class="caret"></span>
+                  </button>
+                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+                    </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 col-md-12">
+                <h6>Normalized SCAC</h6>
+                <div class="dropdown environmentsList">
+                  <button class="btn btn-default dropdown-toggle disabled btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose a normalized SCAC</span>
+                  <span class="caret"></span>
+                  </button>
+                    <ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+                    </ul>
+                </div>
+              </div>
+            </div>-->
+
+
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-9" align="right">
+          <table align="right">
+          	<tr>
+          		<td>
+          			<h6 >Logistics Services Providers (LSP):&nbsp;&nbsp;</h6>
+          		</td>
+          		<td>
+          			<textarea class="form-control input-text" rows="1" style="width: 200px"></textarea>
+          		</td>
+            </tr>
+          </table>  
+          </div>
+
+      <!--    <div class="col-xs-12 col-sm-6 col-md-2">
+            <h6>Search Type:</h6>
+            <% @searchTypes["searchTypes"].each_with_index do |x,i| %>
+              <% if x["searchType"] != 'ALL' %>
+              <div class="radio radio-type">
+                <label>
+                  <input type="radio" name="searchTypesRadio" id="<%= x["searchTypeId"] %>" value="<%= x["searchTypeId"] %>" <% if i == 1%> checked <% end %>> 
+                  <% if x["searchType"] == 'FrghtBl' %>SCAC
+                  <% else %>
+                  <%= x["searchType"] %>
+                  <% end %>
+                </label>
+              </div>
+             <% end %>
+           <% end %>
+      </div>   -->
+
+        </div>
+      </div>
+       <div class="panel-footer">
+        <div class="row">
+         <!--
+          <div class="col-xs-12 col-sm-8 col-md-1">
+            <i class="fa fa-cog fa-spin fa-2x work-spinner"></i>
+          </div>-->
+          <div class="col-xs-2 col-sm-2 col-md-3 col-md-offset-9">
+            <button type="button" class="btn btn-default btn-clear" >Clear</button>
+            <button type="button" class="btn btn-success btn-search disabled"><i class="fa fa-search"></i> Search</button>
+          </div>
+       </div>
+       </div>
+    </div>
+  </div>
+</div>
