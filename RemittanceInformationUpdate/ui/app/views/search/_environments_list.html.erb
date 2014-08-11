@@ -1,0 +1,15 @@
+<button class="btn btn-default dropdown-toggle btn-environments" type="button" id="environmentsDropdown" data-toggle="dropdown"><span id="textEnv" class="default-environment">Choose an Environment</span>
+<span class="caret"></span>
+</button>
+<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="environmentsDropdown" id="environmentsDropdown">
+  <% @environments["environments"].each do |x| %>
+    <li id="<%= x["environmentId"] %>" role="presentation" class="li-environment">
+      <a role="menuitem" tabindex="-1" href="javascript:void(0)"><%= x["environmentName"] %></a>
+    </li>
+  <% end %> 
+</ul>
+
+
+
+
+
